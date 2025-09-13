@@ -888,19 +888,6 @@ body {
     box-shadow: var(--brutal-shadow);
 }
 
-.smart-recall-toggle {
-    color: var(--brutal-primary);
-    text-decoration: underline;
-    cursor: pointer;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.smart-recall-toggle:hover {
-    color: var(--brutal-secondary);
-}
-
 .message-time {
     font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.7);
