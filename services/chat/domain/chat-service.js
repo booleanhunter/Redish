@@ -6,13 +6,13 @@ const chatRepository = new ChatRepository();
 
 /**
  * Save response to semantic cache
- * @param {string} sessionId - User session ID
  * @param {string} query - Original user query
  * @param {string} response - Response to cache
  * @param {number} ttlMillis - Time to live in milliseconds
+ * @param {string} [sessionId] - Optional user session ID
  * @returns {Promise<Object>} Cache save result
  */
-export async function saveToSemanticCache(sessionId, query, response, ttlMillis) {
+export async function saveToSemanticCache(query, response, ttlMillis, sessionId) {
     try {
         await chatRepository.saveResponseInSemanticCache(
             query,
@@ -36,13 +36,13 @@ export async function saveToSemanticCache(sessionId, query, response, ttlMillis)
 
 /**
  * Check semantic cache for similar queries
- * @param {string} sessionId - User session ID
  * @param {string} query - User query to check
+ * @param {string} [sessionId] - Optional user session ID for scoped search
  * @returns {Promise<Object|null>} Cached response or null
  */
-export async function checkSemanticCache(sessionId, query) {
+export async function checkSemanticCache(query, sessionId) {
     try {
-        return await chatRepository.findFromSemanticCache(sessionId, query);
+        return await chatRepository.findFromSemanticCache(query, sessionId);
     } catch (error) {
         console.error('Error checking semantic cache:', error);
         throw error;
